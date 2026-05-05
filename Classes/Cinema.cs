@@ -36,18 +36,22 @@ public static class Cinema
     public static void UngdomEllerPensionar()
     {
         int alder = FragaEfterNummer("Ange ålder", "Ogiltig ålder.");
+        int pris = PrisFranAlder(alder);
 
-        if (alder < 20)
+        switch (pris)
         {
-            Console.WriteLine("Ungdomspris: 80kr");
-        }
-        else if (alder > 64)
-        {
-            Console.WriteLine("Pensionärspris: 90kr");
-        }
-        else
-        {
-            Console.WriteLine("Standardpris: 120kr");
+            case 0:
+                Console.WriteLine("Barn eller Gammelåldringspris: Gratis");
+                break;
+            case 80:
+                Console.WriteLine("Ungdomspris: 80kr");
+                break;
+            case 90:
+                Console.WriteLine("Pensionärspris: 90kr");
+                break;
+            default:
+                Console.WriteLine("Standardpris: 120kr");
+                break;
         }
     }
 
