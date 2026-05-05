@@ -1,8 +1,8 @@
 namespace Ovn2_FlowControl.Classes;
 
-public class Upprepa
+public static class Upprepa
 {
-    public static void TioGanger()
+    public static void ValtAntalGanger(int antal = 1)
     {
         Console.Write("Skriv en text: ");
         string? text = Console.ReadLine();
@@ -13,5 +13,9 @@ public class Upprepa
         }
 
         Console.WriteLine();
+    }
+    public static void TioGanger()
+    {
+        ValtAntalGanger(10);
     }
 }
