@@ -2,9 +2,9 @@ namespace Ovn2_FlowControl.Classes;
 
 public static class StringSplit
 {
-    public static void DetTredjeOrdet()
+    public static void DetPositionsValdaOrdet(int position = 1, string positionsText = "första")
     {
-        Console.Write("Skriv en mening med minst 3 ord: ");
+        Console.Write($"Skriv en mening med minst {position} ord: ");
         string? mening = Console.ReadLine();
 
         if (string.IsNullOrWhiteSpace(mening))
@@ -15,12 +15,16 @@ public static class StringSplit
 
         string[] ord = mening.Split(' ', StringSplitOptions.RemoveEmptyEntries);
 
-        if (ord.Length < 3)
+        if (ord.Length < position)
         {
-            Console.WriteLine("Mening måste innehålla minst 3 ord.");
+            Console.WriteLine($"Meningen måste innehålla minst {position} ord.");
             return;
         }
 
-        Console.WriteLine($"Det tredje ordet är: {ord[2]}");
+        Console.WriteLine($"Det {positionsText} ordet är: {ord[position - 1]}");
+    }
+    public static void DetTredjeOrdet()
+    {
+        DetPositionsValdaOrdet(3, "tredje");
     }
 }
