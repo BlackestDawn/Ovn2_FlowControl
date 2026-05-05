@@ -37,7 +37,7 @@ namespace Ovn2_FlowControl
                         break;
 
                     case "3":
-                        UpprepaTioGanger();
+                        Upprepa.TioGanger();
                         break;
 
                     case "4":
@@ -53,19 +53,6 @@ namespace Ovn2_FlowControl
             }
         }
 
-
-        static void UpprepaTioGanger()
-        {
-            Console.Write("Skriv en text: ");
-            string? text = Console.ReadLine();
-
-            for (int i = 1; i <= 10; i++)
-            {
-                Console.Write($"{i}. {text} ");
-            }
-
-            Console.WriteLine();
-        }
 
         static void DetTredjeOrdet()
         {
