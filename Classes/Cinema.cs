@@ -24,6 +24,15 @@ public static class Cinema
         }
     }
 
+    private static int PrisFranAlder(int alder) =>
+        alder switch
+        {
+            < 5 or > 100 => 0,
+            < 20 => 80,
+            > 64 => 90,
+            _ => 120
+        };
+
     public static void UngdomEllerPensionar()
     {
         int alder = FragaEfterNummer("Ange ålder", "Ogiltig ålder.");
@@ -50,23 +59,9 @@ public static class Cinema
         for (int i = 1; i <= antal; i++)
         {
             int alder = FragaEfterNummer($"Ange ålder för person {i}", "Ogiltig ålder.");
-
-            if (alder < 5 || alder > 100)
-            {
-                Console.WriteLine($"Person {i}: Gratis");
-            }
-            else if (alder < 20)
-            {
-                total += 80;
-            }
-            else if (alder > 64)
-            {
-                total += 90;
-            }
-            else
-            {
-                total += 120;
-            }
+            int pris = PrisFranAlder(alder);
+            total += pris;
+            if (pris == 0) Console.WriteLine($"Person {i}: Gratis");
         }
 
         Console.WriteLine($"Antal personer: {antal}");
