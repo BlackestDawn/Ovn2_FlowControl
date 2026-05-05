@@ -2,17 +2,31 @@ namespace Ovn2_FlowControl.Classes;
 
 public static class Cinema
 {
+    private static int FragaEfterNummer(
+        string promptText,
+        string felText = "Ogiltigt värde.",
+        int minVarde = 0
+    )
+    {
+        while (true)
+        {
+            Console.Write($"{promptText}: ");
+            string? input = Console.ReadLine();
+
+            if (int.TryParse(input, out int returVal) && returVal >= minVarde)    // Jämför med int.Parse(input) --> "hej" --> Exception
+            {
+                return returVal;
+            }
+            else
+            {
+                Console.WriteLine(felText);
+            }
+        }
+    }
 
     public static void UngdomEllerPensionar()
     {
-        Console.Write("Ange ålder: ");
-        string? input = Console.ReadLine();
-
-        if (!int.TryParse(input, out int alder))    // Jämför med int.Parse(input) --> "hej" --> Exception
-        {
-            Console.WriteLine("Ogiltig ålder.");
-            return;
-        }
+        int alder = FragaEfterNummer("Ange ålder", "Ogiltig ålder.");
 
         if (alder < 20)
         {
@@ -30,27 +44,12 @@ public static class Cinema
 
     public static void PrisForSallskap()
     {
-        Console.Write("Hur många personer är ni? ");
-        string? antalInput = Console.ReadLine();
-
-        if (!int.TryParse(antalInput, out int antal) || antal <= 0)
-        {
-            Console.WriteLine("Ogiltigt antal personer.");
-            return;
-        }
-
+        int antal = FragaEfterNummer("Ange antal personer", "Ogiltigt antal personer.", 1);
         int total = 0;
 
         for (int i = 1; i <= antal; i++)
         {
-            Console.Write($"Ange ålder för person {i}: ");
-            string? alderInput = Console.ReadLine();
-
-            if (!int.TryParse(alderInput, out int alder) || alder < 0)
-            {
-                Console.WriteLine("Ogiltig ålder.");
-                return;
-            }
+            int alder = FragaEfterNummer($"Ange ålder för person {i}", "Ogiltig ålder.");
 
             if (alder < 5 || alder > 100)
             {
